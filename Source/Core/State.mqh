@@ -1,8 +1,4 @@
-private:
 
-    SyncPacket m_packet;
-
-    uint m_dirtyFlags;
 
 //==================================================================
 // CChartState
@@ -23,6 +19,13 @@ private:
 
 class CChartState
 {
+private:
+
+    SyncPacket m_packet;
+
+    uint m_dirtyFlags;
+
+
 public:
 
     bool Init();
