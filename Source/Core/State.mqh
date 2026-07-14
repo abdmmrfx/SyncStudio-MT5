@@ -61,5 +61,11 @@ private:
     SyncPacket m_packet;
 
     uint m_dirtyFlags;
+
+bool Import(
+    const SyncPacket&);
+
+void Export(
+    SyncPacket&) const;
 };
 
