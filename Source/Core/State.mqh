@@ -19,16 +19,9 @@
 
 class CChartState
 {
-private:
-
-    SyncPacket m_packet;
-
-    uint m_dirtyFlags;
-
-
 public:
 
-    bool Init();
+    CChartState();
 
     void Reset();
 
@@ -43,27 +36,30 @@ public:
     bool SetScale(
         int scale);
 
-    void Touch();
+    bool HasChanged() const;
 
-    bool IsDirty() const;
-
-    bool IsDirty(uint flag) const;
+    bool IsDirty(
+        EDirtyFlags flag) const;
 
     void ClearDirty();
 
-    const SyncPacket& Packet() const;
-};
+    ulong Sequence() const;
 
-enum EDirtyFlags
-{
-    DIRTY_NONE    = 0,
+    datetime Time() const;
 
-    DIRTY_CURSOR  = 1 << 0,
+    double Price() const;
 
-    DIRTY_SCROLL  = 1 << 1,
+    const SyncPacket&
+        Packet() const;
 
-    DIRTY_SCALE   = 1 << 2,
+private:
 
-    DIRTY_RENDER  = 1 << 3
+    void Touch();
+
+private:
+
+    SyncPacket m_packet;
+
+    uint m_dirtyFlags;
 };
 
